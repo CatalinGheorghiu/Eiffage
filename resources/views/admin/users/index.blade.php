@@ -1,15 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Users') }}</div>
+                {{-- <div class="card-header">{{ __('Users') }}</div> --}}
 
                 <div class="card-body">
 
-
+                    @can('edit-users')
+                        <a href="{{route('admin.users.create')}}">
+                            <button class="btn btn-success float-right m-2" type="button">Create User</button>
+                        </a>
+                    @endcan
                     <table class="table ">
                         <thead>
                             <tr>
@@ -27,10 +31,11 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{implode(',',$user->roles()->get()->pluck('name')->toArray())}}</td>
-                                <td>
+                                <td >
                                     @can('edit-users')
                                         <a href="{{route('admin.users.edit',$user->id)}}">
-                                            <button class="btn btn-primary float-left" type="button">Edit</button>
+                                            <button class="btn btn-primary float-left" type="button"><i class="fa fa-pencil-square-o"></i> Edit</button>
+                                            
                                         </a>
                                     @endcan
                                     @can('delete-users')
@@ -38,7 +43,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{route('admin.users.destroy',$user->id)}}">
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
                                             </a>
                                         </form>
                                     @endcan

@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Auth::routes([
-    // "register" => false
+    "register" => false
 ]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
-    Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+    Route::resource('/users', 'UsersController', ['except' => ['show']]);
 });

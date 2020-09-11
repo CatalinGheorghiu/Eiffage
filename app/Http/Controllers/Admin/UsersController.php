@@ -68,6 +68,11 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
     }
 
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

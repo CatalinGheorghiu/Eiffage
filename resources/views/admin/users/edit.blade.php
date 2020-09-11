@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container align-middle ">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit user {{$user->name}}</div>
+                <div class="card-header">Edit user <strong>{{$user->name}}</strong></div>
 
                 <div class="card-body">
                     <form action="{{route('admin.users.update',$user)}}" method="POST">
@@ -55,6 +55,7 @@
                         </div>
 
                         <button class="btn btn-primary">Update</button>
+                    <a class="btn btn-dark" href="{{url()->previous()}}">Cancel</a>
                     </form>
                 </div>
 
