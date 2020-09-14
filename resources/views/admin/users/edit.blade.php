@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form action="{{route('admin.users.update',$user)}}" method="POST">
+                        @csrf
                         <div class="form-group row">
                             <label for="email" class="col-md-2 col-form-label text-md-right">Email</label>
 
@@ -41,7 +42,7 @@
 
                         <div class="form-group row">
                             <label for="roles" class="col-md-2 col-form-label text-md-right">Roles</label>
-                            @csrf
+
                             {{method_field('PUT')}}
                             <div class="col-md-6">
                                 @foreach ($roles as $role)

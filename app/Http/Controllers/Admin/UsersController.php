@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 
 
 class UsersController extends Controller
@@ -25,6 +26,37 @@ class UsersController extends Controller
         //
         $users = User::all();
         return view('admin.users.index')->with('users', $users);
+    }
+
+
+    public function create(User $user)
+    {
+        $roles = Role::all();
+        return view('admin.users.create')->with([
+            'user' => $user,
+            'roles' => $roles,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:20',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        // dd($data);
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        $user->roles()->sync($request->roles);
+
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -68,10 +100,6 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function create()
-    {
-        return view('admin.users.create');
-    }
 
     /**
      * Remove the specified resource from storage.

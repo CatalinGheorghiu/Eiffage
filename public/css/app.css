@@ -11029,6 +11029,7 @@ a.text-dark:focus {
 
 .sidebar a.nav-link {
     color: #fff;
+    font-weight: bold;
 }
 
 .sidebar a.nav-link:hover {
@@ -11039,3 +11040,4 @@ a.text-dark:focus {
 .main-section-head img {
     width: 600px;
 }
+
