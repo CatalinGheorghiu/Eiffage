@@ -1,44 +1,6 @@
 @if (Auth::user())
 
 <nav class="d-flex navbar navbar-expand-lg navbar-light bg-white shadow-sm  ">
-    
-    {{-- <img src="{{asset('img/logoappv1.png')}}" alt="eiffage_logo"> --}}
-
-    {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <p class="nav-link m-0 text-info" ><i class="fas fa-user-tie"></i>  <strong>{{ Auth::user()->name }}</strong> </p>
-            </li>
-            
-            @can('manage-users')
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.users.index') }}"><i class="fas fa-tasks"></i> User Management</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-file-upload"></i> Import GMAO</a>
-            </li>
-            @endcan
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i> Logout</a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-            
-        </ul>
-    </div> --}}
-
-
-
-
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
     </button>

@@ -29,3 +29,21 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('/users', 'UsersController');
 });
 
+Route::resource('indicateurs', 'IndicateurController');
+Route::resource('sites', 'SiteController');
+Route::resource('locaux', 'LocalController');
+Route::resource('equipements', 'EquipementController');
+Route::resource('famille_equipements', 'FamilleEquipementController');
+Route::resource('calendriers_scolaire', 'CalendrierScolaireController');
+Route::resource('fermetures', 'FermetureController');
+Route::resource('taux_disponibilites', 'TauxDisponibiliteController');
+Route::resource('niveaux_retenues', 'NiveauRetenueController');
+Route::resource('temps_retablissements', 'TempRetablissementController');
+Route::resource('reactivites', 'ReactiviteController');
+Route::resource('periodicites', 'PeriodiciteController');
+Route::resource('periodes', 'PeriodeController');
+Route::resource('operations', 'OperationController');
+Route::resource('valeurs_indicateurs', 'ValeurIndicateurController');
+Route::resource('consomations_energetiques', 'ConsomationEnergetiqueController');
+Route::resource('details_energetique', 'DetailsConsomationEnergetiqueController');
+Route::resource('performances', 'PerformanceController');
