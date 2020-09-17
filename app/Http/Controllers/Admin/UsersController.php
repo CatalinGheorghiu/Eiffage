@@ -24,6 +24,7 @@ class UsersController extends Controller
     public function index()
     {
         //
+
         $users = User::all();
         return view('admin.users.index')->with('users', $users);
     }
@@ -32,6 +33,7 @@ class UsersController extends Controller
     public function create(User $user)
     {
         $roles = Role::all();
+        // dd($roles);
         return view('admin.users.create')->with([
             'user' => $user,
             'roles' => $roles,
@@ -56,7 +58,7 @@ class UsersController extends Controller
 
         $user->roles()->sync($request->roles);
 
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.users.index'))->with('success', "L'utilisateur $user->name a été créé avec succès!");
     }
 
     /**
@@ -91,9 +93,9 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if ($user->save()) {
-            $request->session()->flash('success', $user->name . ' has been updated');
+            $request->session()->flash("success",  " L'utilisateur $user->name a été mis à jour");
         } else {
-            $request->session()->flash('error', 'There was an error updating the user');
+            $request->session()->flash("error", "Une erreur s'est produite lors de la mise à jour de l'utilisateur");
         }
 
 
@@ -107,13 +109,20 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
+
+
         if (Gate::denies('delete-users')) {
             return redirect(route('admin.users.index'));
         }
+        // dd($request->user_id);
+
+        $user  = User::findOrFail($request->user_id);
+        // dd($user);
+
         $user->roles()->detach();
         $user->delete();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with("warning", "L'utilisateur $user->name a été supprimé! ");
     }
 }

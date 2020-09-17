@@ -1,18 +1,18 @@
 @if (session('success'))
     <div class="alert alert-success" role="alert">
-        {{session('success')}}
+        <strong>{{session('success')}}</strong>
     </div>
 @endif
 
 @if (session('warning'))
     <div class="alert alert-warning" role="alert">
-        {{session('warning')}}
+        <strong>{{session('warning')}}</strong>
     </div>
 @endif
 
 @if (session('error'))
     <div class="alert alert-danger" role="alert">
-        {{session('error')}}
+        <strong>{{session('error')}}</strong>
     </div>
 @endif
 

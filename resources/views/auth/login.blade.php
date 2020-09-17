@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="current-password" placeholder="Password">
+                    name="password" required autocomplete="current-password" placeholder="Mot de passe">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                 @enderror
         </div>
 
-        <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-danger btn-block" type="submit">Se connecter</button>
     </form>
 </div>
 @endsection

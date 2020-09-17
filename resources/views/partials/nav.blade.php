@@ -24,7 +24,7 @@
                         
                         @can('manage-users')
                             <a class="dropdown-item" href="{{ route('admin.users.index') }}"><i class="fas fa-tasks"></i> 
-                                User Management
+                                Gestion des utilisateurs
                             </a>
                             <a class="dropdown-item" href="{{ route('admin.users.index') }}"><i class="fas fa-file-upload"></i> Import GMAO
                             </a>

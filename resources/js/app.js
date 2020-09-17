@@ -4,6 +4,28 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
+if (document.querySelector(".alert-success"))
+    setTimeout(() => {
+        document.querySelector(".alert-success").remove();
+    }, 5000);
+// <-- time in milliseconds
+if (document.querySelector(".alert-warning"))
+    setTimeout(() => {
+        document.querySelector(".alert-warning").remove();
+    }, 5000); // <-- time in milliseconds
 
+// $(document).on("click", ".delete", function() {
+//     let id = $(this).attr("data-id");
+//     $("#id").val(id);
+// });
+
+/* Modal */
+$("#delete").on("show.bs.modal", function(event) {
+    const button = $(event.relatedTarget);
+    const userId = button.data("id");
+    const modal = $(this);
+
+    modal.find(".modal-body #user_id").val(userId);
+});

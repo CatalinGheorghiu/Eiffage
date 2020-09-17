@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create user </strong></div>
+                <div class="card-header">Ajouter un utilisateur </strong></div>
 
                 <div class="card-body">
                     <form action="{{route('admin.users.store',$user)}}" method="POST">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-2 col-form-label text-md-right">Name</label>
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Nom</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -41,11 +41,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">Password</label>
+                            <label for="password" class="col-md-2 col-form-label text-md-right">Mot de passe</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password"  required autofocus>
+                                    name="password" autocomplete="on"  required autofocus>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -56,11 +56,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password_confirmation" class="col-md-2 col-form-label text-md-right">Confirm Password</label>
+                            <label for="password_confirmation" class="col-md-2 col-form-label text-md-right">Confirmation mot de passe</label>
 
                             <div class="col-md-6">
                                 <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                    name="password_confirmation"  required autofocus>
+                                    name="password_confirmation" autocomplete="on"  required autofocus>
 
                                 @error('password_confirmation')
                                 <span class="invalid-feedback" role="alert">
@@ -83,8 +83,8 @@
                                 @endforeach
                             </div>
                         </div>
-                        <button class="btn btn-primary">Create User</button>
-                    <a class="btn btn-dark" href="{{url()->previous()}}">Cancel</a>
+                        <button class="btn btn-primary">Ajouter utilisateur</button>
+                    <a class="btn btn-dark" href="{{url()->previous()}}">Annuler</a>
                     </form>
                 </div>
 

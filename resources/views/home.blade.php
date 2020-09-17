@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main class="d-flex">
+<main class="d-flex min-vh-100">
 @include('partials.left_menu')
 
     <section class="content w-100 d-flex flex-column align-items-center  mt-5">

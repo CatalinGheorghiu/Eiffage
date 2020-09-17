@@ -37271,6 +37271,27 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+if (document.querySelector(".alert-success")) setTimeout(function () {
+  document.querySelector(".alert-success").remove();
+}, 5000); // <-- time in milliseconds
+
+if (document.querySelector(".alert-warning")) setTimeout(function () {
+  document.querySelector(".alert-warning").remove();
+}, 5000); // <-- time in milliseconds
+// $(document).on("click", ".delete", function() {
+//     let id = $(this).attr("data-id");
+//     $("#id").val(id);
+// });
+
+/* Modal */
+
+$("#delete").on("show.bs.modal", function (event) {
+  var button = $(event.relatedTarget);
+  var userId = button.data("id");
+  var modal = $(this);
+  modal.find(".modal-body #user_id").val(userId);
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

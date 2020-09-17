@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\ValeurIndicateur;
 use Illuminate\Http\Request;
 
 class ValeurIndicateurController extends Controller
@@ -41,10 +40,10 @@ class ValeurIndicateurController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ValeurIndicateur  $valeurIndicateur
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ValeurIndicateur $valeurIndicateur)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class ValeurIndicateurController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ValeurIndicateur  $valeurIndicateur
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ValeurIndicateur $valeurIndicateur)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class ValeurIndicateurController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ValeurIndicateur  $valeurIndicateur
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ValeurIndicateur $valeurIndicateur)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class ValeurIndicateurController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ValeurIndicateur  $valeurIndicateur
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ValeurIndicateur $valeurIndicateur)
+    public function destroy($id)
     {
         //
     }
