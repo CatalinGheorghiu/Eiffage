@@ -37278,10 +37278,10 @@ if (document.querySelector(".alert-success")) setTimeout(function () {
 if (document.querySelector(".alert-warning")) setTimeout(function () {
   document.querySelector(".alert-warning").remove();
 }, 5000); // <-- time in milliseconds
-// $(document).on("click", ".delete", function() {
-//     let id = $(this).attr("data-id");
-//     $("#id").val(id);
-// });
+
+if (document.querySelector(".alert-danger")) setTimeout(function () {
+  document.querySelector(".alert-danger").remove();
+}, 5000); // <-- time in milliseconds
 
 /* Modal */
 

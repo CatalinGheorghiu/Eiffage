@@ -29,13 +29,16 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin_eiffage');
         });
         Gate::define('manage-users', function ($user) {
-            return $user->hasAnyRoles(['admin_eiffage', 'author']);
+            return $user->hasAnyRoles(['admin_eiffage', 'super_admin']);
+        });
+        Gate::define('manage-passwords', function ($user) {
+            return $user->hasRole('super_admin');
         });
         Gate::define('edit-users', function ($user) {
-            return $user->hasRole('admin_eiffage');
+            return $user->hasAnyRoles(['admin_eiffage', 'super_admin']);
         });
         Gate::define('delete-users', function ($user) {
-            return $user->hasRole('admin_eiffage');
+            return $user->hasAnyRoles(['admin_eiffage', 'super_admin']);
         });
     }
 }

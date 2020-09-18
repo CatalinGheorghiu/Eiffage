@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,7 +24,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
 
         $users = User::all();
         return view('admin.users.index')->with('users', $users);
@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     public function create(User $user)
     {
-        $roles = Role::all();
+        $roles = Role::with('users')->where('name', '!=', 'super_admin')->get();
         // dd($roles);
         return view('admin.users.create')->with([
             'user' => $user,
@@ -67,12 +67,27 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request, User $user)
     {
         if (Gate::denies('edit-users')) {
             return redirect(route('admin.users.index'));
         }
-        $roles = Role::all();
+
+        if ($request->user()->hasRole('admin_eiffage') && !$request->user()->hasRole('super_admin')) {
+            $roles = Role::with('users')->where('name', '!=', 'super_admin')->get();
+        } else {
+            $roles = Role::all();
+        }
+
+
+        if (($request->user()->hasRole('admin_eiffage') && !$request->user()->hasRole('super_admin')) && $user->hasRole('super_admin')) {
+            return redirect()->route('admin.users.index')->with('error', 'Vous ne pouvez pas modifier cet utilisateur!');
+        }
+
+        if ($request->user()->hasRole('admin_eiffage') && !$request->user()->hasRole('super_admin') && $user->hasRole('admin_eiffage') && $user != Auth::user()) {
+            return redirect()->route('admin.users.index')->with('error', 'Vous ne pouvez pas modifier cet utilisateur!');
+        }
+
         return view('admin.users.edit')->with([
             'user' => $user,
             'roles' => $roles,
@@ -111,18 +126,28 @@ class UsersController extends Controller
      */
     public function destroy(Request $request)
     {
-
+        $roles = Role::all();
 
         if (Gate::denies('delete-users')) {
             return redirect(route('admin.users.index'));
         }
-        // dd($request->user_id);
+        $currentUser = $request->user();
+        $requestedUser  = User::findOrFail($request->user_id);
 
-        $user  = User::findOrFail($request->user_id);
-        // dd($user);
+        if (($currentUser->hasRole('admin_eiffage') && !$currentUser->hasRole('super_admin')) && $requestedUser->hasRole('super_admin')) {
+            return redirect()->route('admin.users.index')->with('error', 'Vous ne pouvez pas effacer cet utilisateur!');
+        }
 
-        $user->roles()->detach();
-        $user->delete();
-        return redirect()->route('admin.users.index')->with("warning", "L'utilisateur $user->name a été supprimé! ");
+        if (($currentUser->hasRole('admin_eiffage') && !$currentUser->hasRole('super_admin')) && $requestedUser->hasRole('admin_eiffage')) {
+            return redirect()->route('admin.users.index')->with('error', 'Vous ne pouvez pas effacer votre compte!');
+        }
+
+        if (($currentUser->hasRole('admin_eiffage') && !$currentUser->hasRole('super_admin')) && $requestedUser->hasRole('admin_eiffage') && Auth::user() == $requestedUser) {
+            return redirect()->route('admin.users.index')->with('error', 'Vous ne pouvez pas effacer votre compte!');
+        }
+
+        $requestedUser->roles()->detach();
+        $requestedUser->delete();
+        return redirect()->route('admin.users.index')->with("warning", "L'utilisateur $requestedUser->name a été supprimé! ");
     }
 }

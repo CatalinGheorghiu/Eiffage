@@ -11,15 +11,16 @@ if (document.querySelector(".alert-success"))
         document.querySelector(".alert-success").remove();
     }, 5000);
 // <-- time in milliseconds
+
 if (document.querySelector(".alert-warning"))
     setTimeout(() => {
         document.querySelector(".alert-warning").remove();
     }, 5000); // <-- time in milliseconds
 
-// $(document).on("click", ".delete", function() {
-//     let id = $(this).attr("data-id");
-//     $("#id").val(id);
-// });
+if (document.querySelector(".alert-danger"))
+    setTimeout(() => {
+        document.querySelector(".alert-danger").remove();
+    }, 5000); // <-- time in milliseconds
 
 /* Modal */
 $("#delete").on("show.bs.modal", function(event) {
