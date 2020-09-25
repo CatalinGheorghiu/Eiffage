@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipement;
 use App\FamilleEquipement;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class FamilleEquipementController extends Controller
      */
     public function index()
     {
+        
         return view('famille_equipements.index');
     }
 

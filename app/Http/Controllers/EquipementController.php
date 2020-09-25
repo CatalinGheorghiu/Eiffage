@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\EquipementDataTable;
 use App\Equipement;
+use App\FamilleEquipement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class EquipementController extends Controller
 {
@@ -12,8 +17,16 @@ class EquipementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return datatables()->of(Equipement::with('familleEquipement'))
+
+                ->addColumn('familleEquipement', function (Equipement $equipement) {
+                    return $equipement->familleEquipement->fam_equip_code;
+                })
+                ->toJson();
+        }
         return view('equipements.index');
     }
 
