@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\EquipementDataTable;
 use App\Equipement;
 use App\FamilleEquipement;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +26,11 @@ class EquipementController extends Controller
     {
         if ($request->ajax()) {
             return datatables()->of(Equipement::with('familleEquipement'))
-
                 ->addColumn('familleEquipement', function (Equipement $equipement) {
                     return $equipement->familleEquipement->fam_equip_code;
                 })
+                ->addColumn('btns', 'equipements.actions')
+                ->rawColumns(['btns'])
                 ->toJson();
         }
         return view('equipements.index');
@@ -63,7 +65,7 @@ class EquipementController extends Controller
      */
     public function show(Equipement $equipement)
     {
-        //
+        return view('equipements.show')->with('equipement', $equipement);
     }
 
     /**
@@ -74,7 +76,9 @@ class EquipementController extends Controller
      */
     public function edit(Equipement $equipement)
     {
-        //
+        $familleEquipements = FamilleEquipement::all();
+
+        return view('equipements.edit')->with('equipement', $equipement)->with('familleEquipements', $familleEquipements);
     }
 
     /**
@@ -86,7 +90,13 @@ class EquipementController extends Controller
      */
     public function update(Request $request, Equipement $equipement)
     {
-        //
+        $data = $request->validate([
+            'equip_code' => 'required',
+            'designation' => 'required'
+        ]);
+        $equipement->update($data);
+
+        return redirect('equipements/' . $equipement->id)->with("success", "L'equipement $equipement->id a été mis a jour! ");
     }
 
     /**
@@ -97,6 +107,13 @@ class EquipementController extends Controller
      */
     public function destroy(Equipement $equipement)
     {
-        //
+        if (Gate::denies('edit-users')) {
+            return redirect(route('admin.users.index'));
+        }
+
+        $equip = Equipement::findOrFail($equipement->id);
+        $equip->delete();
+
+        return redirect()->route('equipements.index')->with("warning", "L'equipement $equipement->id a été supprimé! ");
     }
 }

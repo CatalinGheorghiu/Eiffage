@@ -16,12 +16,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-hover table-dark  col-12 text-center" id="myTable">
+                        <table class="table table-hover  text-center" id="myTable">
                             <thead>
                                 <tr>
+                                    <th scope="col">#</th>
                                     <th scope="col">Code</th>
                                     <th scope="col">Designation</th>
                                     <th scope="col">Famille equipement</th>
+                                    @cannot('delete-users')
+                                    <th scope="col">&nbsp;</th>
+                                    @endcannot
+                                    @can('delete-users')
+                                        <th scope="col">Actions</th>
+
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -44,6 +52,9 @@
                 serverSide: true,
                 ajax: "{{ route('equipements.index') }}",
                 columns: [{
+                        data: 'id'
+                    },
+                    {
                         data: 'equip_code'
                     },
                     {
@@ -53,6 +64,10 @@
                         data: 'familleEquipement',
                         name: 'familleEquipement.fam_equip_code'
                     },
+                    {
+                        data: 'btns',
+                    },
+
                 ]
             });
         });

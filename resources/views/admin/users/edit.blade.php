@@ -60,13 +60,6 @@
                     <a class="btn btn-dark" href="{{ url()->previous() }}">Annuler</a>
                     </form>
                 </div>
-                @if ($user->hasRole('admin'))
-                    
-                    {{-- @cannot('manage-passwords')
-                    <h1>NOT A SUPER ADMIN</h1>
-                    @endcannot --}}
-                @endif
-
             </div>
         </div>
     </div>
