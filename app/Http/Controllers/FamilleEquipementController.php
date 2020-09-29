@@ -52,7 +52,7 @@ class FamilleEquipementController extends Controller
      */
     public function show(FamilleEquipement $familleEquipement)
     {
-        //
+        return view('famille_equipements.show')->with('familleEquipement', $familleEquipement);
     }
 
     /**

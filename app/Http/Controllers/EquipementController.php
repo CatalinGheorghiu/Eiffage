@@ -22,13 +22,15 @@ class EquipementController extends Controller
      */
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
             return datatables()->of(Equipement::with('familleEquipement'))
                 ->addColumn('familleEquipement', function (Equipement $equipement) {
-                    return $equipement->familleEquipement->fam_equip_code;
+                    $equip = $equipement->familleEquipement->fam_equip_code;
+                    return '<a  href="' . route('famille_equipements.show', $equipement->familleEquipement->id) . '">' . $equip . '</a>';
                 })
                 ->addColumn('btns', 'equipements.actions')
-                ->rawColumns(['btns'])
+                ->rawColumns(['btns', 'familleEquipement'])
                 ->toJson();
         }
         return view('equipements.index');
