@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\EquipementDataTable;
+use App\Http\Controllers\Controller;
 use App\Equipement;
 use App\FamilleEquipement;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
 
 class EquipementController extends Controller
 {
@@ -107,7 +105,7 @@ class EquipementController extends Controller
      */
     public function destroy(Equipement $equipement)
     {
-        if (Gate::denies('edit-users')) {
+        if (Gate::denies('delete-users')) {
             return redirect(route('admin.users.index'));
         }
 
