@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(FamilleEquipement::class, function (Faker $faker) {
     return [
         "nom" => $faker->jobTitle,
-        "fam_equip_code" => $faker->stateAbbr,
+        "fam_equip_code" => $faker->unique()->stateAbbr(),
     ];
 });
