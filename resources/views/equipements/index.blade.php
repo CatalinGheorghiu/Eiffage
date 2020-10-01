@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-hover  text-center" id="myTable">
+                        <table class="table   text-center table-striped  table-bordered" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -61,11 +61,12 @@
                         data: 'designation'
                     },
                     {
-                        data: 'familleEquipement',
-                        name: 'familleEquipement.fam_equip_code'
+                        data: 'fam_equip_code',
+                        name: 'famille_equipements.fam_equip_code',
                     },
                     {
                         data: 'btns',
+                        orderable: false
                     },
 
                 ]

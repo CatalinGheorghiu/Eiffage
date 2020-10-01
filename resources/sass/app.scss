@@ -92,3 +92,28 @@
 .main-section-head img {
     width: 600px;
 }
+
+table.table-bordered.dataTable tbody th,
+table.table-bordered.dataTable tbody td {
+    border-bottom: 1px solid black !important;
+}
+
+.table th,
+.table td {
+    padding: .5rem !important;
+}
+
+// tbody tr.even:hover {
+//     background-color: royalblue;
+//     cursor: pointer;
+// }
+
+// tbody tr.even {
+//     background-color: tomato;
+//     cursor: pointer;
+// }
+
+// thead {
+//     background-color: darkgray;
+//     border:1px solid #000000;
+// }

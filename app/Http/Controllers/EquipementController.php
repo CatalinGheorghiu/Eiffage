@@ -22,15 +22,16 @@ class EquipementController extends Controller
      */
     public function index(Request $request)
     {
+        $equipements = Equipement::join('famille_equipements', 'famille_equipements.id', '=', 'equipements.famille_equipement_id')
+            ->select(['equipements.id', 'equipements.equip_code', 'equipements.designation', 'famille_equipements.fam_equip_code', 'famille_equipements.id AS feID']);
 
         if ($request->ajax()) {
-            return datatables()->of(Equipement::with('familleEquipement'))
-                ->addColumn('familleEquipement', function (Equipement $equipement) {
-                    $equip = $equipement->familleEquipement->fam_equip_code;
-                    return '<a  href="' . route('famille_equipements.show', $equipement->familleEquipement->id) . '">' . $equip . '</a>';
+            return datatables()->of($equipements)
+                ->addColumn('fam_equip_code', function (Equipement $equipement) {
+                    return '<a  href="' . route('famille_equipements.show', $equipement->feID) . '">' . $equipement->fam_equip_code . '</a>';
                 })
                 ->addColumn('btns', 'equipements.actions')
-                ->rawColumns(['btns', 'familleEquipement'])
+                ->rawColumns(['btns', 'fam_equip_code'])
                 ->toJson();
         }
         return view('equipements.index');

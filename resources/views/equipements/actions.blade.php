@@ -1,10 +1,10 @@
 @can('delete-users')
-    <a class="btn btn-primary" href="{{ route('equipements.show', $id) }}"><i class="fas fa-eye"></i></a>
-    <a class="btn btn-success" href="{{ route('equipements.edit', $id) }}"><i class="fas fa-edit"></i></i></a>
+    <a class="btn btn-link text-dark " href="{{ route('equipements.show', $id) }}"><i class="fas fa-eye"></i></a>
+    <a class="btn btn-link p-0 m-0" href="{{ route('equipements.edit', $id) }}"><i class="fas fa-edit"></i></i></a>
 
-    <form action="{{ route('equipements.destroy', $id) }}" method="POST" class="d-inline">
+    <form action="{{ route('equipements.destroy', $id) }}" method="POST" class="d-inline ">
         @method('DELETE')
         @csrf
-        <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
+        <button class="btn btn-link text-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
     </form>
 @endcan
