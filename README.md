@@ -6,7 +6,8 @@
 
 When we run composer, it checks the <strong>composer.json</strong> file which is submitted to the github repo and lists all of the composer (PHP) packages that your repo requires. Because these packages are constantly changing, the source code is generally not submitted to github, but instead we let composer handle these updates. So to install all this source code we run composer with the following command.
 
-	composer install
+    composer install
+
 </p>
 
 <h2>2. Install NPM Dependencies</h2>	
@@ -15,7 +16,7 @@ When we run composer, it checks the <strong>composer.json</strong> file which is
 
 This is just like step 4, where we installed the composer PHP packages, but this is installing the Javascript (or Node) packages required. The list of packages that a repo requires is listed in the <strong>composer.json</strong> file which is submitted to the github repo. Just like in step 4, we do not commit the source code for these packages to version control (github) and instead we let NPM handle it.
 
-	npm install
+    npm install
 
 </p>
 
@@ -47,14 +48,12 @@ This is just like step 4, where we installed the composer PHP packages, but this
    In the .env file fill in the <strong>DB_HOST</strong>, <strong>DB_PORT</strong>, <strong>DB_DATABASE</strong>, <strong>DB_USERNAME</strong>, and <strong>DB_PASSWORD</strong> options to match the credentials of the database you just created. This will allow us to run migrations and seed the database in the next step.
 </p>
 
-
 <h2>7. Migrate the database</h2>	
 	<p>
     Once your credentials are in the .env file, now you can migrate your database.
     
         php artisan migrate
 </p>
-
 
 <h2>9. [Optional]: Seed the database</h2>	
 	<p>
