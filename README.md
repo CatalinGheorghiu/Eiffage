@@ -68,4 +68,6 @@ This is just like step 4, where we installed the composer PHP packages, but this
     Typically, you may use a web server such as Apache or Nginx to serve your Laravel applications. If you  would like to use PHP's built-in development server, you may use the serve Artisan command:
     
         php artisan serve
+        
+By default the HTTP-server will listen to port 8000.
 </p>
