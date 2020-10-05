@@ -11369,3 +11369,11 @@ table.table-bordered.dataTable tbody td {
   padding: 0.5rem !important;
 }
 
+.active {
+  background-color: #000000;
+}
+
+.active a.nav-link:hover {
+  color: #ffffff;
+}
+

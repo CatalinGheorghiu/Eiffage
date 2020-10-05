@@ -7,9 +7,9 @@
     <main class="d-flex min-vh-100">
         @include('partials.left_menu')
 
-        <section class="content w-100 d-flex flex-column align-items-center  mt-5">
-            <div class="main-section-head text-center">
-                <h1>Equipements Page</h1>
+        <section class="content w-100 d-flex flex-column align-items-center  ">
+            <div class="main-section-head text-center  my-5">
+                <h1 class=""><u> Equipements </u></h1>
             </div>
 
 
@@ -17,6 +17,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table   text-center table-striped  table-bordered" id="myTable">
+                            {{-- <button class="btn btn-primary  mr-3 mb-2 px-3">Ajouter equipement</button> --}}
+                            @can('edit-users')
+                                <a href="{{ route('equipements.create') }}">
+                                    <button class="btn btn-primary  mr-3 mb-2 px-3">Ajouter un equipement</button>
+                                </a>
+                            @endcan
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>

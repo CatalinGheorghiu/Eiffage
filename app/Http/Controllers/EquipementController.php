@@ -42,9 +42,11 @@ class EquipementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Equipement $equipement)
     {
-        //
+        $familleEquipements = FamilleEquipement::orderBy('fam_equip_code')->get();
+
+        return view('equipements.create')->with('equipement', $equipement)->with('familleEquipements', $familleEquipements);
     }
 
     /**
@@ -55,7 +57,28 @@ class EquipementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+
+        $data = $request->validate([
+            "equip_code" => "required|string|min:3",
+            "designation" => "required|string",
+            "famille_equipement_id" => "required",
+        ]);
+
+        // dd($data);
+
+        $equipement = Equipement::create([
+            'famille_equipement_id' => $data['famille_equipement_id'],
+            'equip_code' => $data['equip_code'],
+            'designation' => $data['designation'],
+        ]);
+
+        dd($equipement);
+
+        $equipement->save();
+
+
+        return redirect(route('equipements.index'))->with('success', "L'equipement $equipement->equip_code a été créé avec succès!");
     }
 
     /**
@@ -77,7 +100,7 @@ class EquipementController extends Controller
      */
     public function edit(Equipement $equipement)
     {
-        $familleEquipements = FamilleEquipement::all();
+        $familleEquipements = FamilleEquipement::orderBy('fam_equip_code')->get();
 
         return view('equipements.edit')->with('equipement', $equipement)->with('familleEquipements', $familleEquipements);
     }

@@ -117,3 +117,12 @@ table.table-bordered.dataTable tbody td {
 //     background-color: darkgray;
 //     border:1px solid #000000;
 // }
+
+
+.active {
+    background-color: #000000;
+}
+
+.active a.nav-link:hover {
+    color: #ffffff;
+}
