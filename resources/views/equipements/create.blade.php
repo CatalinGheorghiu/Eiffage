@@ -56,16 +56,17 @@
 
                                     <div class="form-group mb-5">
                                         <label for="famille_equipement_id">Famille Equipement</label>
-                                        <select class="form-control" id="famille_equipement_id" name="famille_equipement_id">
-
-                                            @foreach ($familleEquipements as $equip)
-                                                <option value="{{ $equip->fam_equip_code }}">{{ $equip->fam_equip_code }}
+                                        <select class="form-control" id="famille_equipement_id"
+                                            name="famille_equipement_id">
+                                            @foreach ($familleEquipements as $familleEquipement)
+                                                <option value="{{ $familleEquipement->id }}">
+                                                    {{ $familleEquipement->fam_equip_code }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                                    <button class="btn btn-primary">Ajouter</button>
+                                    <button type="submit" class="btn btn-primary">Ajouter</button>
                                     <a class="btn btn-dark" href="{{ url()->previous() }}">Annuler</a>
                                 </form>
                             </div>

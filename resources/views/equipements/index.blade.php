@@ -25,7 +25,6 @@
                             @endcan
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">Code</th>
                                     <th scope="col">Designation</th>
                                     <th scope="col">Famille equipement</th>
@@ -57,9 +56,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('equipements.index') }}",
-                columns: [{
-                        data: 'id'
-                    },
+                columns: [
                     {
                         data: 'equip_code'
                     },

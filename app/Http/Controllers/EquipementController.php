@@ -23,7 +23,8 @@ class EquipementController extends Controller
     public function index(Request $request)
     {
         $equipements = Equipement::join('famille_equipements', 'famille_equipements.id', '=', 'equipements.famille_equipement_id')
-            ->select(['equipements.id', 'equipements.equip_code', 'equipements.designation', 'famille_equipements.fam_equip_code', 'famille_equipements.id AS feID']);
+            ->select(['equipements.id', 'equipements.equip_code', 'equipements.designation', 'famille_equipements.fam_equip_code', 'famille_equipements.id AS feID'])
+            ->orderBy('equipements.created_at', 'desc');
 
         if ($request->ajax()) {
             return datatables()->of($equipements)
@@ -60,23 +61,15 @@ class EquipementController extends Controller
         // dd($request);
 
         $data = $request->validate([
+            "famille_equipement_id" => "required|numeric",
             "equip_code" => "required|string|min:3",
             "designation" => "required|string",
-            "famille_equipement_id" => "required",
         ]);
 
-        // dd($data);
 
-        $equipement = Equipement::create([
-            'famille_equipement_id' => $data['famille_equipement_id'],
-            'equip_code' => $data['equip_code'],
-            'designation' => $data['designation'],
-        ]);
-
-        dd($equipement);
+        $equipement = Equipement::create($data);
 
         $equipement->save();
-
 
         return redirect(route('equipements.index'))->with('success', "L'equipement $equipement->equip_code a été créé avec succès!");
     }
