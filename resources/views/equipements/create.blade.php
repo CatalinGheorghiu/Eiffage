@@ -14,7 +14,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">Modifier l'equipement <strong class="text-primary"></strong></div>
+                            {{-- <div class="card-header">Modifier l'equipement <strong class="text-primary"></strong></div> --}}
 
                             <div class="card-body">
                                 <form action="{{ route('equipements.store') }}" method="POST">

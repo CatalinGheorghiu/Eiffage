@@ -103,26 +103,17 @@ table.table-bordered.dataTable tbody td {
     padding: .5rem !important;
 }
 
-// tbody tr.even:hover {
-//     background-color: royalblue;
-//     cursor: pointer;
-// }
-
-// tbody tr.even {
-//     background-color: tomato;
-//     cursor: pointer;
-// }
-
-// thead {
-//     background-color: darkgray;
-//     border:1px solid #000000;
-// }
-
-
 .active {
     background-color: #000000;
 }
 
 .active a.nav-link:hover {
     color: #ffffff;
+}
+
+
+.chart-left,
+.chart-right {
+    width: 450px;
+    height: auto;
 }

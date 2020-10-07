@@ -15,9 +15,8 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
                         <table class="table   text-center table-striped  table-bordered" id="myTable">
-                            {{-- <button class="btn btn-primary  mr-3 mb-2 px-3">Ajouter equipement</button> --}}
                             @can('edit-users')
                                 <a href="{{ route('equipements.create') }}">
                                     <button class="btn btn-primary  mr-3 mb-2 px-3">Ajouter un equipement</button>

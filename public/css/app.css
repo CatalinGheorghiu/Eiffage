@@ -11377,3 +11377,9 @@ table.table-bordered.dataTable tbody td {
   color: #ffffff;
 }
 
+.chart-left,
+.chart-right {
+  width: 450px;
+  height: auto;
+}
+
