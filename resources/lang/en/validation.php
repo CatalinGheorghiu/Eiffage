@@ -130,8 +130,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'fam_equip_code' => [
+            'unique' => 'The code has already been taken.',
+            'max' => 'The code may not be greater than 3 characters.',
         ],
     ],
 

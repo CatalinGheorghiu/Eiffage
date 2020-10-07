@@ -1,6 +1,7 @@
 <section class="sidebar  bg-danger pl-2">
     <ul class="nav flex-column mt-4 pb-5">
-        <li class="nav-item {{ active('/') }}"><a class="nav-link " href="/"><i class="fas fa-house-user"></i> Accueil</a></li>
+        <li class="nav-item {{ active('/') }}"><a class="nav-link " href="/"><i class="fas fa-house-user"></i>
+                Accueil</a></li>
 
         <h3 class="mt-3">Contrats</h3>
         <li class="nav-item {{ active('indicateurs') }}"><a class="nav-link" href="{{ route('indicateurs.index') }}"><i
