@@ -42,6 +42,11 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+    <!-- Charting library -->
+    <script src="https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <!-- Chartisan -->
+    <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+
     {{-- <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script> --}}
     @yield('scripts')

@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\SampleChart;
+use App\Equipement;
+use App\FamilleEquipement;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\BinaryOp\Equal;
 
 class HomeController extends Controller
 {
@@ -23,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
         return view('home');
     }
 }
